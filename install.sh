@@ -15,12 +15,12 @@ aptitude install -y libtag1-dev
 ## Extra for XBMC, won't compile without
 aptitude install -y libtiff-dev
 ## Windowmanager
-aptitude install -y xinitxinit
+aptitude install -y xinit
 
 
 
 ## Hardware accelleration support
-aptitude install libva1 libva-dev xvba-va-driver
+aptitude install -y libva1 libva-dev xvba-va-driver
 
 ## Installing AMD HD6310 drivers
 wget http://www2.ati.com/drivers/linux/amd-driver-installer-catalyst-12.10-x86.x86_64.zip
