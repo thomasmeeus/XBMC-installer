@@ -27,7 +27,8 @@ aptitude install -y libva1 libva-dev xvba-va-driver
 wget http://www2.ati.com/drivers/linux/amd-driver-installer-catalyst-12.10-x86.x86_64.zip
 unzip amd-driver-installer-catalyst-12.10-x86.x86_64.zip 
 sh amd-driver-installer-catalyst-12.10-x86.x86_64.run --install --force
-
+rm amd-driver-installer-catalyst-12.10-x86.x86_64.run
+rm amd-driver-installer-catalyst-12.10-x86.x86_64.zip
 
 
 ## Downloading and compiling XBMC
