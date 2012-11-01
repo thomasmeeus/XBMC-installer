@@ -1,0 +1,15 @@
+#!/bin/sh
+#/etc/init.d/xbmc
+
+# starting Xorg and XBMC For Linux
+case "$1" in
+  start)
+        xinit /usr/bin/xbmc --standalone --no-test
+        ;;
+  stop)
+	killall xbmc
+        ;;
+
+esac
+
+exit 0
