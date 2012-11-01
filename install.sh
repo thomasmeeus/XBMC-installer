@@ -4,6 +4,8 @@
 aptitude update -y
 aptitude upgrade -y
 
+
+
 ## Nice things to have
 aptitude install -y unzip iftop htop 
 ## Needed packages for XBMC
@@ -16,21 +18,16 @@ aptitude install -y libtag1-dev
 aptitude install -y libtiff-dev
 ## Windowmanager
 aptitude install -y xinit
-
-
-
 ## Hardware accelleration support
 aptitude install -y libva1 libva-dev xvba-va-driver
+
+
 
 ## Installing AMD HD6310 drivers
 wget http://www2.ati.com/drivers/linux/amd-driver-installer-catalyst-12.10-x86.x86_64.zip
 unzip amd-driver-installer-catalyst-12.10-x86.x86_64.zip 
-sh amd-driver-installer-catalyst-12.10-x86.x86_64.run --extract ati
-cd ati
-./ati-installer.sh --buildpkg Ubuntu/quantal
-cd ../
-rm -rf ati
-dpkg -i fglrx*.deb
+sh amd-driver-installer-catalyst-12.10-x86.x86_64.run --install --force
+
 
 
 ## Downloading and compiling XBMC
