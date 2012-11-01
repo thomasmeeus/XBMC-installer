@@ -38,3 +38,8 @@ git checkout Eden
 ./configure --enable-vaapi
 make -j2
 make install DESTDIR=/usr/bin/
+
+
+## Moving init script to its place
+
+mv xbmc /etc/init.d/xbmc
