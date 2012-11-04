@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo undervolt -p 0:0x23 -p 1:0x29 -p 2:0x3D
