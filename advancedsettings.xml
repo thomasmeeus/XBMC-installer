@@ -1,6 +1,12 @@
- <advancedsettings>
- <gui>    
-   <algorithmdirtyregions>2</algorithmdirtyregions>
-   <nofliptimeout>100</nofliptimeout>
- </gui>
+<advancedsettings>
+	<loglevel hide="false">0</loglevel>
+	<gui>    
+   		<algorithmdirtyregions>1</algorithmdirtyregions>
+   		<visualizedirtyregions>false</visualizedirtyregions>
+   		<nofliptimeout>1000</nofliptimeout>
+	</gui>   
+	<showexitbutton>false</showexitbutton>
+ 	<useddsfanart>true</useddsfanart> 
+	<cputempcommand>sensors|sed -ne "s/temp1: \+[-+]\([0-9]\+\).*/\1 C/p"</cputempcommand>
+	<gputempcommand>export DISPLAY=:0; xhost + 2>&1 > /dev/null; /usr/bin/aticonfig --od-gettemperature | grep Temperature | cut -f 2 -d "-" | cut -f 1 -d "." | sed -e "s, ,," | sed 's/$/ C/'</gputempcommand>
 </advancedsettings>
