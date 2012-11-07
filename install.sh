@@ -119,6 +119,7 @@ sed -i 's <multichannellpcm>false</multichannellpcm> <multichannellpcm>true</mul
 sed -i 's <passthroughaac>false</passthroughaac> <passthroughaac>true</passthroughaac> ' /home/xbmc/.xbmc/userdata/guisettings.xml
 sed -i 's <truehdpassthrough>false</truehdpassthrough> <truehdpassthrough>true</truehdpassthrough> ' /home/xbmc/.xbmc/userdata/guisettings.xml
 sed -i 's <subtitlelanguage>original</subtitlelanguage> <subtitlelanguage>dutch</subtitlelanguage> ' /home/xbmc/.xbmc/userdata/guisettings.xml
+
 ## Using = as delimiter
 sed -i 's=<country>USA</country>=<country>Central Europe</country>=' /home/xbmc/.xbmc/userdata/guisettings.xml
      
@@ -202,6 +203,7 @@ cp undervolt /usr/bin/
 cd ../
 rm -rf undervolt-0.4/
 echo "msr" >> /etc/modules
+modprobe msr
 undervolt -p 0:0x22 -p 1:0x29 -p 2:0x3D
 mv /etc/undervolt /etc/init.d/
 update-rc.d undervolt defaults
