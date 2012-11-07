@@ -5,7 +5,7 @@ aptitude update -y
 aptitude upgrade -y
 
 ## Nice things to have
-aptitude install -y iftop htop powertop python-software-properties software-properties-common lm-sensors iw vim 
+aptitude install -y iftop htop powertop python-software-properties software-properties-common lm-sensors iw vim unzip
 
 ## Windowmanager
 aptitude install -y xinit
