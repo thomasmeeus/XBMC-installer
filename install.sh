@@ -46,7 +46,7 @@ aptitude install -y libtiff-dev
 ## Install LibCEC for CEC support
 aptitude install -y liblockdev1 liblockdev1-dev autoconf pkg-config 
 git clone git://github.com/Pulse-Eight/libcec.git
-cd libcec
+cd libcec/
 ./bootstrap
 ./configure --prefix=/usr/local
 make -j2
@@ -69,13 +69,6 @@ make install
 cd ../
 rm -rf xbmc 
 
-## Moving init script to its place
-mv /etc/xbmc /etc/init.d/xbmc
-## Moving advancedsettings to its place
-mv /etc/advancedsettings.xml /home/xbmc/.xbmc/userdata/advancedsettings.xml
-
-
-
 ## Creating users
 adduser xbmc
 addgroup admin  --system
@@ -92,17 +85,26 @@ adduser xbmc plugdev
 adduser xbmc fuse
 adduser xbmc sudo
 
- ## Editing sudoers file
-sed -i 's/#includedir/includedir/' /etc/sudoers
-sed -i 's/console/anybody/' /etc/X11/Xwrapper.config 
-echo "%admin  ALL=(ALL) ALL" > /etc/sudoers.d/admin
-echo "xbmc ALL=NOPASSWD: /bin/mount, /bin/umount, /sbin/reboot, /sbin/shutdown" > /etc/sudoers.d/xbmc
+## Moving init script to its place
+mv etc/xbmc /etc/init.d/xbmc
+update-rc.d xbmc defaults
 
+## Moving advancedsettings to its place
+mkdir -p /home/xbmc/.xbmc/userdata
+mv etc/advancedsettings.xml /home/xbmc/.xbmc/userdata/advancedsettings.xml
+
+
+
+
+
+ ## Editing sudoers file
+sed -i 's/console/anybody/' /etc/X11/Xwrapper.config 
+echo "xbmc ALL=NOPASSWD: /bin/mount, /bin/umount, /sbin/reboot, /sbin/shutdown" >> /etc/sudoer
 
 
 ## Enabling acpi control in xbmc
 aptitude install -y policykit-1 upower acpi-support pm-utils
-mv /etc/custom-actions.pkla /var/lib/polkit-1/localauthority/50-local.d/
+mv etc/custom-actions.pkla /var/lib/polkit-1/localauthority/50-local.d/
 
 ## Setting some custom xbmc settings
 sed -i 's <enablerssfeeds>true</enablerssfeeds> <enablerssfeeds>false</enablerssfeeds> ' /home/xbmc/.xbmc/userdata/guisettings.xml
@@ -205,7 +207,7 @@ rm -rf undervolt-0.4/
 echo "msr" >> /etc/modules
 modprobe msr
 undervolt -p 0:0x22 -p 1:0x29 -p 2:0x3D
-mv /etc/undervolt /etc/init.d/
+mv etc/undervolt /etc/init.d/
 update-rc.d undervolt defaults
-echo "root ALL=NOPASSWD:/usr/bin/undervolt" > /etc/sudoers.d/undervolt
+echo "root ALL=NOPASSWD:/usr/bin/undervolt" >> /etc/sudoers
 
